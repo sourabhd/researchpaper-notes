@@ -1,0 +1,77 @@
+%        File: Sep11.latex
+%     Created: Thu Sep 11 09:00 AM 2014 E
+% Last Change: Thu Sep 11 09:00 AM 2014 E
+%
+\documentclass[a4paper,12pt]{article}
+\begin{document}
+
+\textbf{Sourabh Daptardar (108209783)   Sep 11, 2014 }
+
+\section{Non-parametric Model for Background Subtraction}
+\textbf{Authors:} Ahmed Elgammal, David Harwood, Larry Davis \\
+
+\textbf{Method Summary:}
+\begin{itemize}
+    \item{\textbf{Basic Background Model:} Probability density function with a
+        kernel $ Pr\left(x_t\right) = \frac{1}{n} \sum_{i=1}^{N} K\left(x_t -
+    x_i\right) $ computed from recent sample of intensity values. $K$ is chosen
+to be normal function. Thus, it is a non-parametric model and claimed to be
+superior to mixture of $K$ gaussians}
+    \item{\textbf{Suppress False Detections:} False Detections could be due to
+    random noise which should be homogeneous or small movements which should be
+spatially clustered. Assuming consecutive frames can have only small
+displacements of pixels, detect if a pixel caused by movement of background
+object in small neighborhood of the detection. Pixel displacement probability
+and in turn connected component displacement probability are computed and
+thresholds are set.}
+    \item{\textbf{Shadow Detection:} $s = R + G + B$ is used as lightness
+        measure. Set reasonable bounds on ratio of value of $s$ in a static background
+    frame to that in the current frame }
+    \item{\textbf{Background model updation:} Short term and long term models of
+    background are computed an their intersection is taken.}
+    \item{\textbf{Spatial Coherency:} Morphological operators.}
+\end{itemize}
+
+\textbf{Key Idea:} Non parametric model formulation.
+
+\textbf{Advantage:} Overcomes limitations of Mixture of Gaussians model, like
+low detection sensitivity or adaptations to targets.
+
+\textbf{Disadvantage:} Too many parameters to tune.
+
+
+\newpage
+\section{Bayesian Modeling for Dynamic Scenes}
+\textbf{Authors:} Yaser Sheikh, Mubarak Shah \\
+
+\textbf{Method Summary:}
+
+Unlike the previous paper, both the foreground objects and background are
+modeled. The paper outlines three principles:
+\begin{itemize}
+    \item{\textbf{Spatial correlation:} Unlike the previous paper assumes that
+    intensities of pixels are not independent but they correlated. So, this
+paper represents background using a single function. This model is a function of
+five variables : r, g, b, x and y. It uses Kernel Density Estimation technique
+like the previous paper for the learning this model.}
+    \item{\textbf{Temporal Persitence:} Interesting objects tend to remain in
+    spatial vicinity and tend to maintain consistent colors from frame to frame.
+Foreground objects are modeled as a mixture of uniform and Kernel function.}
+    \item{\textbf{Spatial Context:} To remove the artifacts, generally
+    morphological operators are used. This paper however, proposes Markov Random
+Field formulation to remove the inconsistencies, making use of the fact that
+objects in the real world tend to be spatially coherent. s-t cuts are used to
+solve the optimization problem of MAP for the MRF.}
+\end{itemize}
+
+\textbf{Key Idea:} Modeling both foreground and background, and outlining three
+new principles: spatial correlation, temporal persistence, spatial context.
+
+\textbf{Advantage:} Principled approach.
+
+\textbf{Disadvantage:} Complex as compared to previous approaches like Mixture
+of Gaussians.
+
+\end{document}
+
+

@@ -1,0 +1,282 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+%\usepackage{media9}
+%\usepackage{movie15}
+\usepackage{multimedia}
+\usepackage{beamerthemesplit}
+\usetheme{CambridgeUS}
+
+\title{Human Action Recognition: Paper Review}
+\author{Sourabh Daptardar, Minh Hoai Nguyen}
+\date{September 16, 2014}
+
+\begin{document}
+    \frame{\titlepage}
+
+    \frame{\frametitle{Outline}\tableofcontents}
+
+    \section{Recognizing Action at a Distance: Efros et al, ICCV 2003}
+
+        \begin{frame}
+        \frametitle{NTSC World Cup broadcast: action recognition from ``medium''
+        field view}
+        \textbf{Goal: } recognize human actions at a distance
+            \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.67]{images1/fbnew2.jpg}
+            \end{figure}
+
+        \end{frame}
+
+        \begin{frame}
+        \frametitle{Algorithm}
+            \begin{itemize}
+                \item{Track and stabilize moving figure}
+                \item{Compute motion descriptors which compute ``residual''
+                    caused by body parts}
+                \item{Classification: nearest neighbor matching with a dataset}
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}
+        \frametitle{What do we desire in feature descriptors?}
+        \begin{itemize}
+            \item{Motion independent of appearance.}
+            \item{Reliability of matching in case of noisy data.}
+            \item{Discriminative enough}
+        \end{itemize}
+        \end{frame}
+
+        \begin{frame}
+            \frametitle{Motion Descriptor Matching}
+            Given a stabilized figure-centric sequence:
+            \begin{itemize}
+                \item{Compute optical flow at each frame}.
+                \item{Split the optical flow field $F = (F_x, F_y)$ into $4$ half wave rectified components $F_x+$, $F_y+$, $F_x-$, $F_y-$}
+                \item{Blur each of these with Gaussian.}
+                \item{Descriptors are compared by normalized cross correlation}
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}
+        \frametitle{Motion Descriptor Matching: 16 ballet actions dataset}
+            \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.6]{images1/ballet-match.jpg}
+            \end{figure}
+        \end{frame}
+
+        
+        \begin{frame}
+        \frametitle{Motion Descriptor Matching: Tennis dataset}
+            \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.7]{images1/tennis-match.jpg}
+            \end{figure}
+        \end{frame}
+
+        \begin{frame}
+        \frametitle{Motion Descriptor Matching: Best Match}
+        \movie[showcontrols, poster, externalviewer]{\includegraphics{images1/best-match.png}}{images1/best-match.avi}
+        \end{frame}
+
+        \begin{frame}
+        \frametitle{Motion Descriptor Matching: Best Match (Single Player)}
+            \movie[showcontrols, poster, height = 0.6 \textwidth, width = 0.6
+            \textwidth,
+        externalviewer]{\includegraphics[height=0.6\textwidth]{images1/player-match.png}}{images1/player-match.avi}
+        \end{frame}
+
+        \begin{frame}
+        \frametitle{Classification (Football)}
+            \movie[height = 0.6 \textwidth, width = 0.6 \textwidth,
+            externalviewer]{\includegraphics[height=0.6\textwidth]{images1/class-football.png}}{images1/class-football.avi}
+        \end{frame}
+
+
+
+        \begin{frame}
+        \frametitle{Classification (Tennis)}
+            \movie[height = 0.6 \textwidth, width = 0.6 \textwidth,
+            externalviewer]{\includegraphics[height=0.6\textwidth]{images1/class-tennis.png}}{images1/class-tennis.avi}
+        \end{frame}
+
+        \begin{frame}
+        \frametitle{Action Synthesis: Do As I Do 1}
+            \movie[height = 0.6 \textwidth, width = 0.6 \textwidth,
+            externalviewer]{\includegraphics[height=0.6\textwidth]{images1/GregWorldCup.png}}{images1/GregWorldCup.avi}
+        \end{frame}
+
+        \begin{frame}
+        \frametitle{Action Synthesis: Do As I Do 2}
+            \movie[height = 0.6 \textwidth, width = 0.6 \textwidth,
+            externalviewer]{\includegraphics[height=0.6\textwidth]{images1/daid-tennis.png}}{images1/daid-tennis.avi}
+        \end{frame}
+
+        \begin{frame}
+        \frametitle{Action Synthesis: Do As I Say 1}
+            \movie[height = 0.6 \textwidth, width = 0.6 \textwidth,
+            externalviewer]{\includegraphics[height=0.6\textwidth]{images1/dais1.png}}{images1/dais1.avi}
+
+        \end{frame}
+
+    
+        \begin{frame}
+        \frametitle{Action Synthesis: Do As I Say 2}
+            \movie[height = 0.6 \textwidth, width = 0.6 \textwidth,
+            externalviewer]{\includegraphics[height=0.6\textwidth]{images1/dais2.png}}{images1/dais2.avi}
+
+        \end{frame}
+
+
+    \section{Learning realistic human actions from movies: Laptev et al, CVPR 2008}
+
+    \begin{frame}
+    \frametitle{So far: the datasets looked like this}
+     \movie[height = 0.6 \textwidth, width = 0.6 \textwidth,
+     externalviewer]{\includegraphics[height=0.6\textwidth]{images1/kth.png}}{images1/kth.avi}
+    \end{frame}
+
+    \begin{frame}
+    \frametitle{Learning realistic human actions from movies}
+     \movie[height = 0.6 \textwidth, width = 0.6 \textwidth,
+     externalviewer]{\includegraphics[height=0.6\textwidth]{images/cvpr08demo.png}}{images/cvpr08demo.mpg}
+    \end{frame}
+
+
+    \begin{frame}
+        \frametitle{Movies}
+        \begin{itemize}
+            \item{American Beauty}
+            \item{Being John Malkovich}
+            \item{Big Fish}
+            \item{Casablanca}
+            \item{\ldots\ldots}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Actions (Classes)}
+        \begin{columns}
+            \begin{column}{3cm}
+                \begin{itemize}
+                    \item{AnswerPhone}
+                    \item{GetOutCar}
+                    \item{HandShake}
+                    \item{HugPerson}
+                    \item{Kiss}
+                    \item{SitDown}
+                    \item{SitUp}
+                    \item{StandUp}
+                \end{itemize}
+            \end{column}
+            \begin{column}{7cm}
+                \begin{center}
+                    \begin{figure}[h]
+                        \centering
+                        \caption{Variability in Actions}
+                        \includegraphics[scale=0.4]{images/actions/actions.png}
+                    \end{figure}
+                \end{center}
+            \end{column}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Automatic annotation of human actions} 
+        \begin{itemize}
+            \item{Match speech sections in subtitles and scripts }
+            \item{Transfer time information from subtitles to scripts}
+            \item{alignment score}
+            \item{Bag-of-features model of text classification.}
+            \item{Features: words, adjacent pair of words, non-adjacent pair of
+                word in a window}
+            \item{Classifier: Regularized perceptron (equivalent to SVM)}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Alignment of actions in script}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.6]{images/scriptalignment.png}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Text Classification}    
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.65]{images/textclassification.png}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Video Classification} 
+        \begin{itemize}
+            \item{Interest Points: Space Time Features \\
+                \begin{itemize}
+                    \item{Harris Corners}
+                    \item{Multiscale:  6 spatial, 2 temporal}
+                    \item{Eliminate artifacts due to shot boundaries}
+                    \item{Calculate histogram of gradients over space time volumes: Histogram of gradient, Histogram of flow descriptors}
+                    \item{Parameters chosen by experimentation}
+                \end{itemize}}
+            \item{Spatio-temporal bag-of-features: \\
+                \begin{itemize}
+                    \item{100K features sampled from training video}
+                    \item{$4000$ clusters for K-means: dictionary}
+                    \item{BoF histogram of visual words}
+                    \item{binning: spatio-temporal bins} 
+                \end{itemize}}
+            \item{Classifier: Non-linear support vector machines \\
+                \begin{itemize}
+                    \item{Comparing histograms: $\chi^{2}$ kernel}
+                \end{itemize}}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Space-time interest points}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.75]{images/actionfeatures.jpg}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Spatio-temporal Grids}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.7]{images/spattempgrids.png}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Number of occurrences of channel}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.8]{images/svmchannels.png}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Average classification accuracy on KTH}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.5]{images/results_kth.png}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Average Precision on HOHA dataset}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.75]{images/results_hoha.png}
+        \end{figure}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Thank You}
+    \end{frame}
+\end{document}

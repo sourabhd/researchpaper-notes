@@ -1,0 +1,83 @@
+%        File: Sep9.latex
+%     Created: Tue Sep 09 08:00 AM 2014 E
+% Last Change: Tue Sep 09 08:00 AM 2014 E
+%
+\documentclass[a4paper,12pt]{article}
+\begin{document}
+\textbf{Sourabh Daptardar (108209783)   Sep 9, 2014} \\
+\section{Large Displacement Optical Flow: Descriptor Matching in Variational
+Motion Estimation}
+\textbf{Authors:} Thomas Bronx, Jitendra Malik
+
+\textbf{Conference:} TPAMI 2010 \\
+
+\textbf{Summary:}
+
+This paper presents an approach of integrating descriptor matching into
+variational framework for optical flow. Traditional variational model for
+optical flow is formulated as the following energy functional minimization
+problem:
+\begin{equation}
+    E(\mathbf{w}) = E_{color} + \gamma E_{gradient} + \alpha E_{smooth}
+\end{equation}
+
+The terms correspond to color constancy, gradient constancy and regularization
+(smoothness) constraints. Solution is  by obtained by local minima corresponding to where
+the first variants (derivatives) become zero. For initializing a coarse-to-fine
+strategy is followed. Hence, solutions with larger structures are favoured due to
+initializations. The result of this is that finer and faster motions are not
+captured. On the other hand, feature descriptors can produce large number of
+correct displacement correspondences. However, unlike variational model autorthey can
+not produce dense motion fields. To get the best out of both worlds, two
+descriptor based terms  are added to the variational formulation.
+\begin{equation}
+E(\mathbf{w}) = E_{color}(\mathbf{w}) + \gamma E_{gradient}(\mathbf{w}) + \alpha
+E_{smooth}(\mathbf{w}) + \beta E_{match}(\mathbf{w,w_{1}}) + E_{desc}(\mathbf{w_{1}})
+\end{equation} 
+
+The function is non-convex, so we need good approximations. The paper shows how
+the properties of descriptor matching and continuation method can be exploited
+to simplify the optimization problem. \\
+
+\textbf{Key Idea:}
+
+Combining discrete descriptor matching into the variational framework. \\
+
+\textbf{Positives:} Handles large displacements in optical flow. \\ 
+
+\textbf{Limitations:} Non-convex formulation 
+
+\newpage
+\section{DeepFlow: large displacement optical flow with deep learning}
+
+\textbf{Authors:} Philippe Weinzaepfel, Jerome Revaud, Zaid Harchoui, Cordelia Schmid
+
+\textbf{Conference:} ICCV 2013
+
+\textbf{Summary:}
+This paper extends the idea of Bronx and Malik. They improve the descriptor
+matching by adding dense correspondences matching and self smoothed matching.
+They introduce a multi-stage architecture for descriptor matching with about six
+layers, interleaving convolutions and max pooling. The construction has been
+inspired by deep convolutional networks. This allows them to get denser
+descriptor matches, as hierarchical model can provide for matches at coarser or
+finer level. They also allow for warping of the descriptors and subdivide the
+SIFT descriptor into smaller ($4 \times 4 $) patches and allowing flexibility in
+the matches within appropriate limits. Thus non-rigid deformations can be
+handled by this method. \\
+
+\textbf{Key Idea:}
+
+Convolutional net like structure and handling of non-rigid deformations. \\
+
+\textbf{Advantages:}
+
+Denser correspondences and non-rigid deformations \\
+
+\textbf{Disadvantages:}
+
+Complexity 
+
+\end{document}
+
+

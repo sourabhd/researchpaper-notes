@@ -1,0 +1,27 @@
+%        File: Sep25.latex
+%     Created: Thu Sep 25 09:00 AM 2014 E
+% Last Change: Thu Sep 25 09:00 AM 2014 E
+%
+\documentclass[a4paper]{article}
+\author{Sourabh Daptardar}
+\title{Paper Review}
+\date{September 25, 2014}
+\begin{document}
+\maketitle
+\section{Supervised Descent Method and Its Application to Face Alignment (Xiong,
+Torre)}
+
+This paper provides an alternative to Newton's method for optimization. Newton's
+method requires the objective function to be twice differentiable which is often
+not possible in dealing with things like SIFT operators. For the Non-linear
+least squares problem (NLS), they propose that the ``descent direction'' term be
+expressed as a linear combination of feature vectors and a bias term and can be 
+learnt from training data. They claim the error monotonically decreases as
+number of regressors are added and algorithm converged in $4$ or $5$ steps in
+their experiments. More specifically, they apply this technique to the problem
+of image alignment. They claim to outperform the state-of-the-art on challenging
+datasets: LFPW, LFW-AC, RU-FACS and Youtube celebrities.
+
+\end{document}
+
+
