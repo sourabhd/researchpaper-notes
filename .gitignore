@@ -1,0 +1,11 @@
+--2016-10-11 23:29:28--  https://raw.githubusercontent.com/github/gitignore/master/TeX.gitignore
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.100.133
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.100.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1962 (1.9K) [text/plain]
+Saving to: ‘TeX.gitignore’
+
+     0K .                                                     100%  204M=0s
+
+2016-10-11 23:29:29 (204 MB/s) - ‘TeX.gitignore’ saved [1962/1962]
+
